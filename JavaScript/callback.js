@@ -27,7 +27,4 @@ var getStudents = () => {
     })
 }
 
-
-
-
 addEntry(newStudent,getStudents)
