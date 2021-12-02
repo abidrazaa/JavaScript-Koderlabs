@@ -1,6 +1,5 @@
 /*
 CLOSURE:
-Accessing variables from outside the function scope.
 When you have a function defined inside another function, the inner function has access and scope of the outer function.
 */
 
@@ -15,5 +14,6 @@ function outer(){
     }
 }
 
-var a = outer()
-a()
+outer()()
+// var a = outer()
+// a()
