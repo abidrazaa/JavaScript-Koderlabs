@@ -1,0 +1,12 @@
+*) git restore <filename>
+
+*) git checkout -b <branch name>  ==> create a new branch
+eg: git checkout -b "developer"
+
+*) git checkout master ==> Go back to master branch
+
+*) git branch ==> list all branches
+
+*) rm -rf .git ==> git repo ko hata dega
+
+*) git commit -a -m "message" ==> you can skip the staging area(git add .) using this
