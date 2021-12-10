@@ -1,0 +1,11 @@
+public function getDays($created_at){
+
+        $date_from = strval($created_at);
+        $date_from = substr($date_from,0,10);
+        $now = time(); // or your date as well
+        $your_date = strtotime($date_from);
+        $datediff = $now - $your_date;
+        $days = floor($datediff / (60 * 60 * 24));
+
+        return $days;
+    }
