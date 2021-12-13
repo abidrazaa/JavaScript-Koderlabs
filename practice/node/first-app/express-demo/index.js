@@ -38,7 +38,6 @@ app.post("/api/courses", (req, res) => {
         name: req.body.name,
         id: newCourses.length + 1       
     }
-
     newCourses.push(course);
     res.send(course);
 })
