@@ -1,6 +1,7 @@
 const express = require("express");
-const app = express();
-app.use(express.json())
+const Joi = require("joi"); //use to validate inputs
+const app = express(); //use for routing
+app.use(express.json());
 
 app.get("/", (req, res) => {
     res.send("hello world");
@@ -25,21 +26,29 @@ app.get("/api/course/:id",(req, res) => {
     var searchedCourse = newCourses.find((c) => {
         return c.id === parseInt(req.params.id);
     });
-
+ 
     if(!searchedCourse) {
         res.status(404).send("The Course doesnot exist in the course list.");
     }
     res.send(searchedCourse.name);
 })
 
-app.post("/api/courses", (req, res) => {
+app.post("/api/addCourses", (req, res) => {
+
+    const schema = Joi.object({
+        name:Joi.string().min(3).required(),     
+    });
+    const Validation = schema.validate(req.body);
     
+    res.send(Validation.error.details[0].message);
+    // res.send(Validation);
+
     const course = {
-        name: req.body.name,
-        id: newCourses.length + 1       
+        id: newCourses.length + 1,
+        name: req.body.name               
     }
     newCourses.push(course);
-    res.send(course);
+    res.send(newCourses);
 })
 
 const port = process.env.PORT || 3000;
