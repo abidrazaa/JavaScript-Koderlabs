@@ -31,7 +31,8 @@ async function createDocument( name_, author_, tags_, isPublished_){
     console.log(result)
 }
 
-// createDocument("React","Abid Raza",["fronend"],false);
+// createDocument("React/Angular","Abid Raza",["fronend"],false);
+// createDocument("Laravel","test name",["backend"],true);
 
 
 async function getCourses(){
@@ -63,4 +64,20 @@ async function getCourses(){
     console.log("courses==>",courses);
 }
 
-getCourses();
+// getCourses();
+
+
+async function updateCourse(id){
+    console.log("in update")
+    const course = await Course.findById(id);
+
+    if(!course) return;
+
+    course.author = "updated Abid";
+    const updatedResult = await course.save();
+    
+    console.log(updatedResult);
+
+}
+
+// updateCourse("61c2ec517c3a73bc26f9fa0a")
