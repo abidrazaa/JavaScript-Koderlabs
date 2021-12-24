@@ -1,0 +1,7 @@
+express (Routing)
+nodemon (auto run after every edit)
+joi (validation)
+mongoose (databse)
+bcrypt (hash password)
+jsonwebtoken (generate token)
+config 

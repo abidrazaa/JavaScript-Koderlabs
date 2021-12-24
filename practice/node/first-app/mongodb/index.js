@@ -16,7 +16,6 @@ const courseSchema = new mongoose.Schema({
     isPublished: Boolean
 })
 
-
 const Course = mongoose.model("Course", courseSchema);
 
 async function createDocument( name_, author_, tags_, isPublished_){
@@ -33,7 +32,6 @@ async function createDocument( name_, author_, tags_, isPublished_){
 
 // createDocument("React/Angular","Abid Raza",["fronend"],false);
 // createDocument("Laravel","test name",["backend"],true);
-
 
 async function getCourses(){
     const pageNumber = 2;
@@ -66,7 +64,6 @@ async function getCourses(){
 
 // getCourses();
 
-
 async function updateCourse(id){
     console.log("in update")
     const course = await Course.findById(id);
@@ -75,7 +72,6 @@ async function updateCourse(id){
 
     course.author = "updated Abid";
     const updatedResult = await course.save();
-    
     console.log(updatedResult);
 
 }
