@@ -1,10 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
+const auth = require("../middlewares/auth")
 const {User , validateUser } = require("../models/user")
 
 
-router.post("/",async (req , res) => {
+router.get("/me" , auth, async (req, res) => {
+
+    const user = await User.findById(req.user._id)
+        .select("-password");   // will select all fields except password
+
+    return res.send(user);
+
+})
+
+
+router.post("/", auth,  async (req , res) => {
     const { error } = validateUser(req.body);
     if (error) return res.status(400).send(error.details[0].message);
 
